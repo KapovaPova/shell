@@ -1,4 +1,6 @@
 #include <iostream>
+#include <readline/readline.h>
+#include <readline/history.h>
 #include "split.h"
 #include "parse_redirection.h"
 #include <string>
@@ -10,9 +12,15 @@ std::string system_name = "archlinux";
 
 int main() {
     while (true) {
-        std::string command;
-        std::cout << '[' << username << '@' << system_name << ' ' << path << "]$ ";
-        std::getline(std::cin, command);
+        std::string text = std::string("[") + username + "@" + system_name + " " + path + "]$ ";
+
+        char* input = readline(text.c_str());
+
+        if (input == nullptr) break;
+
+        std::string command(input);
+        add_history(input);
+        free(input);
 
         if (command == "exit") break;
 
