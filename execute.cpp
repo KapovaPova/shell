@@ -3,22 +3,14 @@
 //
 
 #include "execute.h"
-#include <algorithm>
 #include <iostream>
+#include "ls.h"
+#include "pwd.h"
+#include "cd.h"
 
 std::string execute(const std::string& command, const std::string& input) {
-    if (command.find("echo") == 0) {
-        return (command.length() > 5) ? command.substr(5) : "";
-    }
-    if (command == "rev") {
-        std::string s = input;
-        std::reverse(s.begin(), s.end());
-        return s;
-    }
-    if (command == "upper") {
-        std::string s = input;
-        for (char &c : s) c = toupper(c);
-        return s;
-    }
-    return "Unknown command: " + command;
+    if (command == "ls") return ls();
+    if (command == "pwd") return pwd();
+    if (command.substr(0, 2) == "cd") return cd(command);
+    return "Unknown command: " + command + '!';
 }
