@@ -6,15 +6,16 @@
 #include <string>
 #include <filesystem>
 
+std::string prev_path = std::filesystem::current_path().string();
 std::string path = std::filesystem::current_path().string();
 std::string username = "kapovapova";
 std::string system_name = "archlinux";
 
 int main() {
     while (true) {
-        std::string text = std::string("[") + username + "@" + system_name + " " + path + "]$ ";
+        std::string prompt = std::string("[") + username + "@" + system_name + " " + path + "]$ ";
 
-        char* input = readline(text.c_str());
+        char* input = readline(prompt.c_str());
 
         if (input == nullptr) break;
 

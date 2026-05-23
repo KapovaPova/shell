@@ -6,10 +6,14 @@
 #include <filesystem>
 #include <string>
 
-std::string ls() {
-    std::string result = "";
+std::string ls(const std::string& command) {
+    bool show_hidden = command.find("-a") != std::string::npos;
+
+    std::string result;
     for (const auto& file : std::filesystem::directory_iterator(path)) {
-        result += file.path().filename().string() + '\n';
+        std::string name = file.path().filename().string();
+        if (!show_hidden && name[0] == '.') continue;
+        result += name + '\n';
     }
     return result;
 }

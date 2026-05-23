@@ -8,6 +8,6 @@
 
 extern std::string path;
 
-std::string ls();
+std::string ls(const std::string& command);
 
 #endif //SHELL_LS_H

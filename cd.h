@@ -7,6 +7,7 @@
 #include <string>
 
 extern std::string path;
+extern std::string prev_path;
 
 std::string cd(const std::string& command);
 

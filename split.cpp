@@ -4,7 +4,6 @@
 
 #include "split.h"
 #include "clear_spaces.h"
-#include "clear_void.h"
 
 std::vector<std::string> split(const std::string& command, const std::string& dividers) {
     std::vector<std::string> result;
@@ -19,7 +18,6 @@ std::vector<std::string> split(const std::string& command, const std::string& di
     result.push_back(command.substr(last_pos));
 
     clear_spaces(result);
-    clear_void(result);
 
     return result;
 }

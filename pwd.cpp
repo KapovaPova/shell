@@ -5,5 +5,5 @@
 #include "pwd.h"
 
 std::string pwd() {
-    return path;
+    return path + '\n';
 }
